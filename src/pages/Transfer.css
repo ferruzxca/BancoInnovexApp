@@ -1,0 +1,24 @@
+.transfer-content {
+  --background: linear-gradient(135deg, #eef0fc 0%, #fff 100%);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.transfer-form {
+  background: #fff;
+  padding: 2rem 2.5rem;
+  border-radius: 18px;
+  box-shadow: 0 6px 32px #7f3ec722;
+  width: 370px;
+  max-width: 98vw;
+}
+.transfer-btn {
+  margin-top: 1.5rem;
+  --background: #7f3ec7;
+  --background-activated: #612faa;
+  --color: #fff;
+  font-weight: 600;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px #8446cf22;
+}

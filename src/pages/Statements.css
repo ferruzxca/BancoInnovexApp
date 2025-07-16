@@ -1,0 +1,19 @@
+.statements-content {
+  --background: linear-gradient(135deg, #eef0fc 0%, #fff 100%);
+  min-height: 100vh;
+  padding-top: 24px;
+}
+.tx-in {
+  border-left: 6px solid #27c972 !important;
+}
+.tx-out {
+  border-left: 6px solid #e94e77 !important;
+}
+ion-item h2 {
+  color: #3e2069;
+  font-weight: 500;
+}
+ion-item p {
+  color: #7f3ec7;
+  font-size: 0.98rem;
+}

@@ -1,0 +1,32 @@
+.profile-content {
+  --background: linear-gradient(135deg, #eef0fc 0%, #fff 100%);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.profile-card {
+  background: #fff;
+  padding: 2.2rem 2.5rem;
+  border-radius: 22px;
+  box-shadow: 0 6px 28px #7f3ec722;
+  text-align: center;
+  width: 340px;
+  max-width: 98vw;
+}
+.profile-avatar {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 1rem auto;
+  border: 4px solid #7f3ec7;
+}
+h2 {
+  color: #3e2069;
+  margin-top: 0.7rem;
+  font-weight: 600;
+}
+.logout-btn {
+  margin-top: 1.8rem;
+  border-radius: 10px;
+  font-weight: 500;
+}

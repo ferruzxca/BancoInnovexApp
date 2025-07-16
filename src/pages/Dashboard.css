@@ -1,0 +1,25 @@
+.dashboard-content {
+  --background: linear-gradient(135deg, #eef0fc 0%, #fff 100%);
+  min-height: 100vh;
+  padding-top: 24px;
+}
+.dashboard-card {
+  border-radius: 20px;
+  box-shadow: 0 6px 16px #8446cf22;
+  transition: transform 0.13s;
+  cursor: pointer;
+}
+.dashboard-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 32px #7f3ec744;
+}
+.card-icon {
+  font-size: 3rem;
+  color: #7f3ec7;
+  margin-bottom: 0.5rem;
+}
+h2 {
+  margin-top: 0.5rem;
+  color: #3e2069;
+  font-weight: 600;
+}
