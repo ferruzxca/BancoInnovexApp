@@ -1,10 +1,12 @@
-export const loginApi = async (username: string, password: string) => {
-  await new Promise(res => setTimeout(res, 800));
-  if ((username === 'raul' || username === 'demo') && password === '1234') {
-    return {
-      token: 'jwt-token-demo',
-      user: { username, name: 'Raúl Innovex', email: 'raul@neovexbank.com' }
-    };
+export const loginApi = async (email: string, password: string) => {
+  try {
+    const res = await fetch("http://31.220.31.203:8081/auth/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password })
+    });
+    return await res.json();
+  } catch (error) {
+    return { mensaje: "Error de red o servidor", estado: false };
   }
-  return null;
 };

@@ -1,25 +1,33 @@
-import React, { useState } from 'react';
+// src/pages/Login.tsx (COMPLETO Y CORREGIDO para React Router v5)
+
+import React, { useState, useContext } from "react";
 import {
   IonPage,
   IonContent,
   IonInput,
   IonButton,
   IonItem,
-  IonLabel
-} from '@ionic/react';
-import './Login.css';
+  IonLabel,
+  IonToast
+} from "@ionic/react";
+import "./Login.css";
+import { AuthContext } from "../context/AuthContext";
+import { useHistory } from "react-router-dom";
 
 const Login: React.FC = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const { login } = useContext(AuthContext);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [showToast, setShowToast] = useState(false);
+  const history = useHistory();
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Si ambos campos tienen texto, navega a dashboard
-    if (username.trim() && password.trim()) {
-      window.location.href = '/dashboard'; // Redirección directa
+    const success = await login(email.trim(), password.trim());
+    if (success) {
+      history.replace("/dashboard");
     } else {
-      alert('Escribe usuario y contraseña');
+      setShowToast(true);
     }
   };
 
@@ -28,17 +36,19 @@ const Login: React.FC = () => {
       <IonContent className="login-content" fullscreen>
         <div className="login-box">
           <img
-            src="/assets/logo_neovex.jpeg"
+            src="/assets/logo-neovexbank.png"
             alt="NeoVexBank"
             className="logo"
+            style={{ width: "60vw", maxWidth: "300px", margin: "0 auto", display: "block" }}
           />
-          <h1>NeoVexBank</h1>
+          <h1 style={{ textAlign: "center" }}>NeoVexBank</h1>
           <form onSubmit={handleLogin}>
             <IonItem>
-              <IonLabel position="floating">Usuario</IonLabel>
+              <IonLabel position="floating">Correo electrónico</IonLabel>
               <IonInput
-                value={username}
-                onIonChange={e => setUsername(e.detail.value!)}
+                value={email}
+                type="email"
+                onIonChange={e => setEmail(e.detail.value!)}
                 required
                 autofocus
               />
@@ -57,6 +67,13 @@ const Login: React.FC = () => {
             </IonButton>
           </form>
         </div>
+        <IonToast
+          isOpen={showToast}
+          onDidDismiss={() => setShowToast(false)}
+          message="Correo o contraseña incorrectos"
+          duration={2000}
+          color="danger"
+        />
       </IonContent>
     </IonPage>
   );

@@ -1,58 +1,57 @@
-import React, { createContext, useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
-import { loginApi } from '../utils/api';
+
+import React, { createContext, useState, useEffect } from "react";
+import { loginApi } from "../utils/api";
 
 type AuthContextType = {
   isAuthenticated: boolean;
-  user: any;
-  login: (username: string, password: string) => Promise<boolean>;
+  token: string | null;
+  role: string | null;
+  login: (email: string, password: string) => Promise<boolean>;
   logout: () => void;
 };
 
 export const AuthContext = createContext<AuthContextType>({
   isAuthenticated: false,
-  user: null,
+  token: null,
+  role: null,
   login: async () => false,
   logout: () => {},
 });
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(!!localStorage.getItem('token'));
-  const [user, setUser] = useState<any>(JSON.parse(localStorage.getItem('user') || 'null'));
-  const history = useHistory();
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(!!localStorage.getItem("token"));
+  const [token, setToken] = useState<string | null>(localStorage.getItem("token"));
+  const [role, setRole] = useState<string | null>(localStorage.getItem("role"));
 
   useEffect(() => {
-    setIsAuthenticated(!!localStorage.getItem('token'));
-    setUser(JSON.parse(localStorage.getItem('user') || 'null'));
+    setIsAuthenticated(!!localStorage.getItem("token"));
+    setToken(localStorage.getItem("token"));
+    setRole(localStorage.getItem("role"));
   }, []);
 
-  const login = async (username: string, password: string) => {
-    try {
-      const res = await loginApi(username, password);
-      if (res && res.token) {
-        localStorage.setItem('token', res.token);
-        localStorage.setItem('user', JSON.stringify(res.user));
-        setUser(res.user);
-        setIsAuthenticated(true);
-        history.replace('/dashboard');
-        return true;
-      }
-      return false;
-    } catch (e) {
-      return false;
+  const login = async (email: string, password: string) => {
+    const res = await loginApi(email, password);
+    if (res.token) {
+      setIsAuthenticated(true);
+      setToken(res.token);
+      setRole(res.role);
+      localStorage.setItem("token", res.token);
+      localStorage.setItem("role", res.role);
+      return true;
     }
+    return false;
   };
 
   const logout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
     setIsAuthenticated(false);
-    setUser(null);
-    history.replace('/login');
+    setToken(null);
+    setRole(null);
+    localStorage.removeItem("token");
+    localStorage.removeItem("role");
   };
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, user, login, logout }}>
+    <AuthContext.Provider value={{ isAuthenticated, token, role, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
