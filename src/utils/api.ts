@@ -1,6 +1,9 @@
 export const loginApi = async (email: string, password: string) => {
   try {
-    const res = await fetch("http://31.220.31.203:8081/auth/login", {
+    const res = await fetch("http://31.220.31.203:8081/auth/login"
+         // const res = await fetch("http://localhost:8080/auth/login"
+
+      , {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password })

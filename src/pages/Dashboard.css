@@ -1,25 +1,167 @@
 .dashboard-content {
-  --background: linear-gradient(135deg, #eef0fc 0%, #fff 100%);
   min-height: 100vh;
-  padding-top: 24px;
+  background: linear-gradient(120deg, #43137e 0%, #5f0a87 55%, #a4508b 80%, #5ee7df 100%);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 110px; /* espacio para Navbar */
+  padding-bottom: 100px; /* espacio para FooterBar */
 }
-.dashboard-card {
-  border-radius: 20px;
-  box-shadow: 0 6px 16px #8446cf22;
-  transition: transform 0.13s;
-  cursor: pointer;
+
+.bank-card {
+  width: 97vw;
+  max-width: 440px;
+  margin: 0 auto;
+  margin-top: 1.7rem;
+  background: rgba(36, 19, 55, 0.97);
+  border-radius: 28px;
+  box-shadow: 0 0 32px #43137e, 0 0 0 2px #5ee7df99, 0 10px 32px #a4508b55;
+  padding: 1.2rem 0.5rem 2.1rem 0.5rem;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
 }
-.dashboard-card:hover {
-  transform: scale(1.03);
-  box-shadow: 0 10px 32px #7f3ec744;
+
+.bank-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
 }
-.card-icon {
-  font-size: 3rem;
-  color: #7f3ec7;
-  margin-bottom: 0.5rem;
+.bank-logo {
+  width: 54px;
+  height: 54px;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 0 18px #5ee7dfbb;
 }
-h2 {
-  margin-top: 0.5rem;
-  color: #3e2069;
+.bank-brand h1 {
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  font-size: 1.3rem;
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: 1px;
+  color: #5ee7df;
+  text-shadow: 0 1px 6px #a4508b55;
+}
+.role-label {
+  display: inline-block;
+  background: linear-gradient(90deg, #a4508b 10%, #5ee7df 90%);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 4px 14px;
+  border-radius: 16px;
+  box-shadow: 0 0 10px #a4508b66;
+  margin-top: 2px;
+}
+
+.user-welcome {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.wave {
+  font-size: 1.7rem;
+  margin-bottom: 0.2rem;
+  display: block;
+}
+.user-welcome h2 {
+  margin: 0 0 8px 0;
   font-weight: 600;
+  color: #fff;
+  font-size: 1.15rem;
+}
+.user-welcome p {
+  margin: 0 0 2px 0;
+  color: #d4c2ef;
+  font-size: 1rem;
+}
+
+.dashboard-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0 auto;
+}
+.action-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 0 14px 18px;
+  background: linear-gradient(90deg, #5ee7df 0%, #a4508b 100%);
+  border: none;
+  border-radius: 14px;
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: #fff;
+  box-shadow: 0 0 9px #a4508b66, 0 0 3px #5ee7df77 inset;
+  cursor: pointer;
+  transition: background 0.19s, transform 0.12s, box-shadow 0.16s;
+}
+.action-btn:hover {
+  background: linear-gradient(100deg, #a4508b 0%, #5ee7df 100%);
+  box-shadow: 0 0 13px #5ee7df99, 0 0 12px #fff44f33 inset;
+  transform: scale(1.04);
+}
+.admin-btn {
+  background: linear-gradient(90deg, #e95869 0%, #5ee7df 100%);
+  color: #fff;
+}
+
+.dashboard-fab {
+  position: fixed;
+  bottom: 92px;
+  right: 18px;
+  z-index: 999;
+}
+.fab-btn {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: linear-gradient(120deg, #a4508b 20%, #5ee7df 80%);
+  color: #fff;
+  font-size: 2.1rem;
+  font-weight: 900;
+  border: none;
+  box-shadow: 0 0 16px #5ee7df, 0 0 7px #fff66c33 inset;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, box-shadow 0.16s;
+}
+.fab-btn:hover {
+  background: linear-gradient(120deg, #5ee7df 10%, #a4508b 90%);
+  box-shadow: 0 0 24px #a4508b, 0 0 7px #fff inset;
+}
+
+@media (min-width: 500px) {
+  .bank-card {
+    max-width: 400px;
+    padding: 2.2rem 1.7rem 2.5rem 1.7rem;
+  }
+  .bank-brand h1 {
+    font-size: 1.5rem;
+  }
+}
+@media (min-width: 700px) {
+  .dashboard-content {
+    padding-top: 125px;
+    padding-bottom: 110px;
+  }
+  .bank-card {
+    max-width: 480px;
+    padding: 2.7rem 2.4rem 2.9rem 2.4rem;
+  }
+  .user-welcome h2 {
+    font-size: 1.35rem;
+  }
+  .action-btn {
+    font-size: 1.18rem;
+  }
+  .fab-btn {
+    width: 65px;
+    height: 65px;
+    font-size: 2.5rem;
+  }
 }

@@ -20,7 +20,7 @@ const Home: React.FC = () => {
 
   const obtenerUsuarios = async () => {
     try {
-      const res = await fetch('http://localhost:8080/api/public/users');
+      const res = await fetch('http://31.220.31.203:8081/api/public/users');
       const data = await res.json();
 
       if (data.estado) {

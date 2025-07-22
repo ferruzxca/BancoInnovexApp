@@ -1,0 +1,19 @@
+.users-content {
+  background: linear-gradient(120deg, #5f0a87 0%, #a4508b 100%);
+  min-height: 100vh;
+  padding-top: 80px;
+}
+.users-title {
+  text-align: center;
+  color: #fff;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+.users-card.glass {
+  background: rgba(255,255,255,0.18);
+  box-shadow: 0 4px 16px 0 rgba(31, 38, 135, 0.20);
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.16);
+  width: 320px;
+  margin: 16px auto;
+}

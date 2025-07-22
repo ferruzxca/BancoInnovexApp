@@ -1,0 +1,43 @@
+.transactions-content {
+  background: linear-gradient(120deg, #5f0a87 0%, #a4508b 100%);
+  min-height: 100vh;
+  padding-top: 80px;
+}
+.transactions-title {
+  text-align: center;
+  color: #fff;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+.transactions-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.input-trans {
+  background: rgba(255,255,255,0.9);
+  border-radius: 8px;
+  padding: 6px 12px;
+  width: 180px;
+}
+.trans-btn-glow {
+  --background: #a4508b;
+  --color: #fff;
+  box-shadow: 0 0 10px #a4508b, 0 0 25px #5f0a87;
+  border-radius: 10px;
+}
+.trans-card.glass {
+  background: rgba(255,255,255,0.17);
+  box-shadow: 0 4px 16px 0 rgba(31, 38, 135, 0.20);
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.16);
+  width: 340px;
+  margin: 16px auto;
+}
+.trans-nodata {
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+}

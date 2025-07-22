@@ -1,0 +1,181 @@
+/* Accounts.css */
+
+.accounts-content {
+  padding: 18px 8px 80px 8px;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #7f6aff 0%, #4b90ff 100%);
+  box-sizing: border-box;
+}
+
+.accounts-title {
+  color: #fff;
+  font-size: 2rem;
+  margin-bottom: 18px;
+  font-weight: 800;
+  text-align: center;
+  letter-spacing: 1.5px;
+  text-shadow: 0 2px 18px #23237499;
+}
+
+.accounts-spinner {
+  margin: 60px auto 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.accounts-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+}
+
+.accounts-nodata {
+  color: #fff;
+  text-align: center;
+  font-size: 1.15rem;
+  margin: 32px 0;
+  opacity: 0.85;
+}
+
+/* Glass Card Styles */
+.accounts-card {
+  min-width: 320px;
+  max-width: 370px;
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 #5e7ce970;
+  border-radius: 24px;
+  backdrop-filter: blur(8px);
+  border: 2px solid rgba(255, 255, 255, 0.22);
+  transition: transform 0.18s, box-shadow 0.18s;
+  margin-bottom: 15px;
+  overflow: hidden;
+  position: relative;
+  animation: cardIn 0.5s;
+}
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(30px);}
+  to   { opacity: 1; transform: translateY(0);}
+}
+
+.accounts-card.inactive {
+  opacity: 0.75;
+  filter: grayscale(0.9);
+  background: rgba(220, 220, 255, 0.28);
+  border: 2px solid #d90075aa;
+}
+
+.acc-status {
+  display: inline-block;
+  margin-left: 12px;
+  font-size: 0.88em;
+  font-weight: 700;
+  color: #18c964;
+  letter-spacing: 1px;
+}
+.accounts-card.inactive .acc-status {
+  color: #d90075;
+}
+
+.acc-num {
+  font-family: 'Fira Mono', monospace;
+  font-size: 1em;
+  background: #e7edfa;
+  color: #4169e1;
+  padding: 2px 8px;
+  border-radius: 6px;
+  margin-left: 6px;
+}
+
+.acc-balance {
+  color: #fff;
+  font-weight: bold;
+  background: linear-gradient(90deg,#c471f5,#fa71cd);
+  padding: 2px 10px;
+  border-radius: 8px;
+  margin-left: 8px;
+  font-size: 1.1em;
+}
+
+.acc-desc {
+  margin: 12px 0 3px 0;
+  color: #5a5a5a;
+  font-size: 0.97em;
+  font-style: italic;
+}
+
+.acc-meta small {
+  color: #7a7a7a;
+  font-size: 0.90em;
+  opacity: 0.85;
+}
+
+/* Modal styling */
+.modal-content {
+  padding: 32px 18px 20px 18px;
+  background: rgba(250, 250, 255, 0.96);
+  border-radius: 22px;
+  max-width: 400px;
+  margin: 24px auto;
+  box-shadow: 0 4px 24px #3a456f3b;
+}
+
+.modal-content h2 {
+  text-align: center;
+  color: #5d3fd3;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.ion-select,
+ion-input,
+ion-select,
+ion-item {
+  --background: rgba(255,255,255,0.6);
+  --highlight-color-focused: #5d3fd3;
+  --color: #232374;
+}
+
+.ion-button {
+  margin-top: 12px;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .accounts-list {
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+  .accounts-card {
+    min-width: 94vw;
+    max-width: 98vw;
+  }
+  .modal-content {
+    max-width: 95vw;
+    padding: 18px 6vw;
+  }
+  .accounts-title {
+    font-size: 1.2rem;
+  }
+}
+
+/* Botones de acción */
+ion-button[color="medium"] {
+  --background: #c1c1c180;
+  --color: #34345c;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+ion-button[color="danger"] {
+  --background: #d90075;
+  --color: #fff;
+  margin-top: 10px;
+}
+ion-button[color="success"] {
+  --background: linear-gradient(90deg, #4bff8f 70%, #7f6aff 100%);
+  --color: #232374;
+}

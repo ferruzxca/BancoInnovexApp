@@ -1,70 +1,90 @@
-import { Redirect, Route, Switch } from 'react-router-dom';
-import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
-import { IonReactRouter } from '@ionic/react-router';
-import Home from './pages/Home';
-import Login from './pages/Login';
-import Dashboard from './pages/Dashboard';
-import Balance from './pages/Balance';
-import Transfer from './pages/Transfer';
-import Statements from './pages/Statements';
-import Profile from './pages/Profile';
-import SideMenu from './components/SideMenu';
-import { AuthProvider, AuthContext } from './context/AuthContext';
-
-import '@ionic/react/css/core.css';
-import '@ionic/react/css/normalize.css';
-import '@ionic/react/css/structure.css';
-import '@ionic/react/css/typography.css';
-import '@ionic/react/css/padding.css';
-import '@ionic/react/css/float-elements.css';
-import '@ionic/react/css/text-alignment.css';
-import '@ionic/react/css/text-transformation.css';
-import '@ionic/react/css/flex-utils.css';
-import '@ionic/react/css/display.css';
-import '@ionic/react/css/palettes/dark.system.css';
-import './theme/variables.css';
+// src/App.tsx
+import { Redirect, Route, Switch } from "react-router-dom";
+import { IonApp, IonRouterOutlet, setupIonicReact } from "@ionic/react";
+import { IonReactRouter } from "@ionic/react-router";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
+import Balance from "./pages/Balance";
+import Transfer from "./pages/Transfer";
+import Accounts from "./pages/Accounts";
+import Statements from "./pages/Statements";
+import Transactions from "./pages/Transactions";
+import Profile from "./pages/Profile";
+import Navbar from "./components/Navbar";
+import FooterBar from "./components/FooterBar";
+import { AuthProvider, AuthContext } from "./context/AuthContext";
+import "@ionic/react/css/core.css";
+import "./theme/variables.css";
 
 setupIonicReact();
 
-const PrivateRoute = ({ component: Component, ...rest }: any) => {
+const PrivateRoute = ({ children, ...rest }: any) => (
+  <AuthContext.Consumer>
+    {({ user }) => (
+      <Route
+        {...rest}
+        render={({ location }) =>
+          user ? children : <Redirect to="/login" />
+        }
+      />
+    )}
+  </AuthContext.Consumer>
+);
+
+const App: React.FC = () => {
+  const location = window.location.pathname;
+  const hideNav = location === "/login";
+
   return (
-    <AuthContext.Consumer>
-      {({ isAuthenticated }) => (
-        <Route
-          {...rest}
-          render={props =>
-            isAuthenticated ? <Component {...props} /> : <Redirect to="/login" />
-          }
-        />
-      )}
-    </AuthContext.Consumer>
+    <IonApp>
+      <AuthProvider>
+        <IonReactRouter>
+          {!hideNav && <Navbar />}
+          <div id="main">
+            <IonRouterOutlet>
+              <Switch>
+                <Route exact path="/login">
+                  <Login />
+                </Route>
+                <PrivateRoute exact path="/dashboard">
+                  <Dashboard />
+                </PrivateRoute>
+                <PrivateRoute exact path="/transactions/:accountId">
+                  <Transactions />
+                </PrivateRoute>
+                <PrivateRoute exact path="/transfer">
+                  <Transfer />
+                </PrivateRoute>
+                <PrivateRoute exact path="/balance">
+                  <Balance />
+                </PrivateRoute>
+                <PrivateRoute exact path="/profile">
+                  <Profile />
+                </PrivateRoute>
+                <PrivateRoute exact path="/accounts">
+                  <Accounts />
+                </PrivateRoute>
+                <PrivateRoute exact path="/statements">
+                  <Statements />
+                </PrivateRoute>
+                <PrivateRoute exact path="/transactions">
+                  <Transactions />
+                </PrivateRoute>
+                <Route exact path="/home">
+                  <Home />
+                </Route>
+                <Route exact path="/">
+                  <Redirect to="/login" />
+                </Route>
+              </Switch>
+            </IonRouterOutlet>
+          </div>
+          {!hideNav && <FooterBar />}
+        </IonReactRouter>
+      </AuthProvider>
+    </IonApp>
   );
 };
-
-const App: React.FC = () => (
-  <IonApp>
-    <AuthProvider>
-      <IonReactRouter>
-        <SideMenu />
-        <div id="main">
-          <IonRouterOutlet>
-            <Switch>
-              <Route exact path="/login" component={Login} />
-              <PrivateRoute exact path="/dashboard" component={Dashboard} />
-              <PrivateRoute exact path="/balance" component={Balance} />
-              <PrivateRoute exact path="/transfer" component={Transfer} />
-              <PrivateRoute exact path="/statements" component={Statements} />
-              <PrivateRoute exact path="/profile" component={Profile} />
-              <Route exact path="/home" component={Home} />
-              <Route exact path="/">
-                <Redirect to="/login" />
-              </Route>
-            </Switch>
-          </IonRouterOutlet>
-        </div>
-      </IonReactRouter>
-    </AuthProvider>
-  </IonApp>
-);
 
 export default App;
