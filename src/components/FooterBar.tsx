@@ -1,26 +1,14 @@
-// src/components/FooterBar.tsx
-import React from "react";
-import {
-  IonFooter,
-  IonToolbar,
-  IonButtons,
-  IonButton,
-} from "@ionic/react";
-import { useHistory } from "react-router-dom";
+ import React from "react";
+import { IonFooter, IonToolbar, IonTitle } from "@ionic/react";
 import "./FooterBar.css";
 
 const FooterBar: React.FC = () => {
-  const history = useHistory();
-
   return (
-    <IonFooter>
+    <IonFooter className="footer-bar">
       <IonToolbar>
-        <IonButtons>
-          <IonButton onClick={() => history.push("/dashboard")}>Inicio</IonButton>
-          <IonButton onClick={() => history.push("/balance")}>Saldo</IonButton>
-          <IonButton onClick={() => history.push("/transfer")}>Transferencia</IonButton>
-          <IonButton onClick={() => history.push("/statements")}>Estados</IonButton>
-        </IonButtons>
+        <IonTitle className="footer-text">
+          © 2025 NeoVexBank. Todos los derechos reservados. ¡Gracias por tu visita!
+        </IonTitle>
       </IonToolbar>
     </IonFooter>
   );

@@ -89,26 +89,26 @@ const Accounts: React.FC = () => {
       setLoading(true);
       try {
         // Cuentas
-        const res = await fetch("http://31.220.31.203:8081/account", {
+        const res = await fetch("https://servidorbanquigt.site:8081/account", {
           headers: { Authorization: `Bearer ${token}` },
         });
         const accountsData = await res.json();
         setAccounts(accountsData);
 
         // Usuarios
-        const resUsers = await fetch("http://31.220.31.203:8081/api/public/users");
+        const resUsers = await fetch("https://servidorbanquigt.site:8081/api/public/users");
         const usersData = await resUsers.json();
         setUsers(usersData.usuarios || []);
 
         // Customers
-        const resCustomers = await fetch("http://31.220.31.203:8081/customer", {
+        const resCustomers = await fetch("https://servidorbanquigt.site:8081/customer", {
           headers: { Authorization: `Bearer ${token}` },
         });
         const customersData = await resCustomers.json();
         setCustomers(customersData);
 
         // Account Types
-        const resTypes = await fetch("http://31.220.31.203:8081/account-type", {
+        const resTypes = await fetch("https://servidorbanquigt.site:8081/account-type", {
           headers: { Authorization: `Bearer ${token}` },
         });
         const typesData = await resTypes.json();
@@ -132,7 +132,7 @@ const Accounts: React.FC = () => {
         accountType: { id: Number(form.accountTypeId) },
         status: form.status,
       };
-      const res = await fetch("http://31.220.31.203:8081/account", {
+      const res = await fetch("https://servidorbanquigt.site:8081/account", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -146,7 +146,7 @@ const Accounts: React.FC = () => {
         setShowModal(false);
         setForm({ customerId: "", accountNumber: "", balance: "", accountTypeId: "", status: "ACTIVA" });
         // Recargar cuentas
-        const newAccounts = await fetch("http://localhost:8080/account", {
+        const newAccounts = await fetch("https://servidorbanquigt.site:8081/account", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setAccounts(await newAccounts.json());
@@ -182,7 +182,7 @@ const Accounts: React.FC = () => {
         accountType: { id: Number(form.accountTypeId) },
         status: form.status,
       };
-      const res = await fetch(`http://31.220.31.203:8081/account/${editAccountId}`, {
+      const res = await fetch(`https://servidorbanquigt.site:8081/account/${editAccountId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -197,7 +197,7 @@ const Accounts: React.FC = () => {
         setIsEditing(false);
         setEditAccountId(null);
         setForm({ customerId: "", accountNumber: "", balance: "", accountTypeId: "", status: "ACTIVA" });
-        const updatedAccounts = await fetch("http://31.220.31.203:8081/account", {
+        const updatedAccounts = await fetch("https://servidorbanquigt.site:8081/account", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setAccounts(await updatedAccounts.json());
@@ -214,7 +214,7 @@ const Accounts: React.FC = () => {
   const handleDeleteAccount = async (id: number) => {
     if (!window.confirm("¿Seguro que deseas eliminar esta cuenta?")) return;
     try {
-      const res = await fetch(`http://31.220.31.203:8081/account/${id}`, {
+      const res = await fetch(`https://servidorbanquigt.site:8081/account/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });

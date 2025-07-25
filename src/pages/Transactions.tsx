@@ -21,7 +21,7 @@ const Transactions: React.FC = () => {
   const fetchTransactions = async () => {
     setLoading(true);
     try {
-      const res = await fetch(`http://31.220.31.203:8081/transactions/${accountId}`);
+      const res = await fetch(`https://servidorbanquigt.site:8081/transactions/${accountId}`);
       if (res.ok) {
         const data = await res.json();
         setTransactions(data);

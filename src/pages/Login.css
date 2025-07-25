@@ -1,34 +1,91 @@
 .login-content {
-  --background: linear-gradient(135deg, #673ab7 0%, #512da8 100%);
+  --background: linear-gradient(135deg, #4412b4 0%, #512da8 80%, #25c6e8 100%);
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-form {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
 }
 
-.login-box {
-  background: white;
-  border-radius: 20px;
-  padding: 2.5rem 2rem;
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 350px;
+.login-card {
+  width: 90vw;
+  max-width: 400px;
+  min-width: 290px;
+  padding: 2.5rem 1.5rem;
+  border-radius: 24px;
+  box-shadow: 0 8px 32px 0 rgba(49, 38, 135, 0.35),
+    0 0 24px 6px #a267f5;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1.5px solid rgba(255,255,255,0.22);
+  position: relative;
+  animation: glow-pop 1s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.logo {
-  width: 120px;
-  margin-bottom: 20px;
+@media (min-width: 600px) {
+  .login-card {
+    width: 40vw;
+    max-width: 400px;
+  }
 }
 
-h1 {
-  color: #673ab7;
-  margin-bottom: 1.5rem;
+.glow-title {
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: #fff;
+  text-shadow:
+    0 0 12px #8f6dff,
+    0 0 36px #25c6e8,
+    0 0 3px #fff;
+  letter-spacing: 1.5px;
+  display: block;
+}
+
+.login-sub {
+  font-size: 1.05rem;
+  color: #e5e5ff;
+  font-weight: 400;
+  text-shadow: 0 0 5px #44008b88;
+}
+
+.login-input {
+  margin-top: 1.2rem;
+  margin-bottom: 0.7rem;
+  --background: rgba(255,255,255,0.90);
+  --highlight-background: #8f6dff77;
+  --box-shadow: 0 0 6px #8f6dff99;
+  border-radius: 10px;
+  font-size: 1.12rem;
+  padding: 8px 10px;
 }
 
 .login-btn {
-  margin-top: 1.5rem;
-  --background: #2962ff;
-  --background-hover: #512da8;
+  margin-top: 1.6rem;
+  --background: linear-gradient(90deg, #512da8 0%, #25c6e8 100%);
+  --background-hover: linear-gradient(90deg, #25c6e8 0%, #512da8 100%);
+  box-shadow: 0 0 8px 2px #8f6dff99;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+@keyframes glow-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+    box-shadow: none;
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 8px 32px 0 rgba(49, 38, 135, 0.35),
+      0 0 24px 6px #a267f5;
+  }
 }

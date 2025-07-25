@@ -54,7 +54,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const login = async (email: string, password: string): Promise<boolean> => {
     try {
       //const res = await fetch("http://localhost:8080/auth/login", {
-        const res = await fetch("http://31.220.31.203:8081/auth/login", {
+        const res = await fetch("https://servidorbanquigt.site:8081/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),

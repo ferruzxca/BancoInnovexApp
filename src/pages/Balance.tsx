@@ -37,7 +37,7 @@ const Balance: React.FC = () => {
     const fetchAccounts = async () => {
       try {
         // Cambia el fetch si usas el servidor real:
-        const res = await fetch("http://31.220.31.203:8081/account", {
+        const res = await fetch("https://servidorbanquigt.site:8081/account", {
         //const res = await fetch("http://localhost:8080/account", {
           headers: { Authorization: `Bearer ${token}` },
         });

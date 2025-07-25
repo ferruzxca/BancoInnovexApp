@@ -1,6 +1,15 @@
 import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
-import { IonPage, IonContent, IonInput, IonButton, IonToast, IonCard, IonCardHeader, IonCardTitle } from "@ionic/react";
+import {
+  IonPage,
+  IonContent,
+  IonInput,
+  IonButton,
+  IonToast,
+  IonCard,
+  IonCardHeader,
+  IonCardTitle,
+} from "@ionic/react";
 import { AuthContext } from "../context/AuthContext";
 import "./Login.css";
 
@@ -25,16 +34,19 @@ const Login: React.FC = () => {
   return (
     <IonPage>
       <IonContent className="login-content" fullscreen>
-        <div className="login-bg"></div>
         <form className="login-form" onSubmit={handleLogin}>
           <IonCard className="login-card glass">
             <IonCardHeader>
-              <IonCardTitle>NeoVexBank Login</IonCardTitle>
+              <IonCardTitle>
+                <span className="glow-title">NeoVexBank</span>
+                <br />
+                <span className="login-sub">Inicia sesión</span>
+              </IonCardTitle>
             </IonCardHeader>
             <IonInput
               className="login-input"
               type="email"
-              placeholder="Correo"
+              placeholder="Correo electrónico"
               value={email}
               onIonChange={e => setEmail(e.detail.value!)}
               required
