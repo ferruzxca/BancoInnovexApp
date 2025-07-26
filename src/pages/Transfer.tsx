@@ -86,7 +86,7 @@ const Transfer: React.FC = () => {
     setIsSending(true);
     try {
       // Cambia si usas el servidor real
-       const res = await fetch("http://31.220.31.203:8081/transactions/transfer", {
+       const res = await fetch("https://servidorbanquigt.site:8081/transactions/transfer", {
       //const res = await fetch("http://localhost:8080/transactions/transfer", {
         method: "POST",
         headers: {
